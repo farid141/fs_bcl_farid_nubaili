@@ -9,8 +9,8 @@
         <label for="armada" class="form-label">armada</label>
         <select class="form-select" name="id_armada" id="armada">
             @foreach ($armadas as $armada)
-            @if (old('id_armada'))
-            <option value="{{ $armada->id }}" selected> {{ $armada->nama_armada }}</option>
+            @if (old('id_armada')==$armada->id)
+            <option value="{{ $armada->id }}" selected> {{ $armada->kendaraan }}</option>
             @else
             <option value="{{ $armada->id }}"> {{ $armada->kendaraan }}</option>
             @endif

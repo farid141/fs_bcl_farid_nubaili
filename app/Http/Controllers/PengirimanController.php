@@ -59,13 +59,15 @@ class PengirimanController extends Controller
     public function update(Request $request, Pengiriman $pengiriman)
     {
         $validatedData = $request->validate([
-            'kendaraan' => 'required',
-            'ketersediaan' => 'required',
-            'kapasitas' => 'required|integer',
+            'id_armada'=>'required',
+            'tanggal_kirim'=>'required',
+            'loc_asal'=>'required',
+            'loc_tujuan'=>'required',
+            'status'=>'required'
         ]);
 
-        Armada::where('id', $armada->id)->update($validatedData);
-        return redirect(route('armada.index'))->with('success', 'Armada '.$armada->id.' has been updated');
+        Pengiriman::where('id', $pengiriman->id)->update($validatedData);
+        return redirect(route('pengiriman.index'))->with('success', 'Pengiriman '.$pengiriman->id.' has been updated');
     }
 
     /**
