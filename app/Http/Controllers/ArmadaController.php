@@ -40,19 +40,11 @@ class ArmadaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Armada $armada)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Armada $armada)
     {
-        //
+        return view('armada.edit', ['armada'=>$armada]);
     }
 
     /**
@@ -60,7 +52,14 @@ class ArmadaController extends Controller
      */
     public function update(Request $request, Armada $armada)
     {
-        //
+        $validatedData = $request->validate([
+            'kendaraan' => 'required',
+            'ketersediaan' => 'required',
+            'kapasitas' => 'required|integer',
+        ]);
+
+        Armada::where('id', $armada->id)->update($validatedData);
+        return redirect(route('armada.index'))->with('success', 'Armada '.$armada->id.' has been updated');
     }
 
     /**

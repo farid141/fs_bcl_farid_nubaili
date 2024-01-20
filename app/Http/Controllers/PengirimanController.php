@@ -32,14 +32,6 @@ class PengirimanController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Pengiriman $pengiriman)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Pengiriman $pengiriman)
