@@ -21,7 +21,7 @@ class ArmadaController extends Controller
      */
     public function create()
     {
-        //
+        return view('armada.create');
     }
 
     /**
@@ -29,7 +29,15 @@ class ArmadaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'kendaraan' => 'required',
+            'ketersediaan' => 'required',
+            'kapasitas' => 'required|integer',
+        ]);
+
+        Armada::create($validatedData);
+        return redirect(route('armada.index'))->with('success', 'New file has been added');
+        // echo "storing armada";
     }
 
     /**

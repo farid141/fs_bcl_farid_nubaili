@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Armada;
 use App\Models\Pengiriman;
 use App\Http\Controllers\ArmadaController;
+use App\Http\Controllers\PengirimanController;
 
 /*
 |--------------------------------------------------------------------------
