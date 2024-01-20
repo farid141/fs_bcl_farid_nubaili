@@ -12,7 +12,9 @@ class PengirimanController extends Controller
      */
     public function index()
     {
-        //
+        // eager loading
+        $pengirimans = Pengiriman::with('armada')->get();
+        return view('pengiriman.index', ['pengirimans'=>$pengirimans]);
     }
 
     /**

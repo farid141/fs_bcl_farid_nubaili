@@ -34,7 +34,8 @@
                 <form action="{{ route('armada.destroy', $armada->id) }}" method="post" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button class="badge bg-danger border-0" onclick="return confirm('are you sure?')">
+                    <button class="badge bg-danger border-0"
+                        onclick="return confirm('are you sure to delete {{ $armada->id }}?')">
                         delete
                     </button>
                 </form>

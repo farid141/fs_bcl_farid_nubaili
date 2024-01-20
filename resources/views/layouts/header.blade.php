@@ -12,7 +12,7 @@
                         href=" {{ route('armada.index') }}">Armada</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('prngiriman*') ? 'active' : '' }}"
+                    <a class="nav-link {{ Request::is('pengiriman*') ? 'active' : '' }}"
                         href="{{ route('pengiriman.index') }}">Pengiriman</a>
                 </li>
             </ul>
