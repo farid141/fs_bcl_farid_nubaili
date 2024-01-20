@@ -23,7 +23,7 @@ class PengirimanController extends Controller
      */
     public function create()
     {
-        $armadas=Armada::where('ketersediaan', 'tersedia')->get();
+        $armadas=Armada::where('ketersediaan', 'ada')->get();
         return view('pengiriman.create', ['armadas'=>$armadas]);
     }
 
@@ -49,7 +49,8 @@ class PengirimanController extends Controller
      */
     public function edit(Pengiriman $pengiriman)
     {
-        //
+        $armadas=Armada::all();
+        return view('pengiriman.edit', ['pengiriman'=>$pengiriman, 'armadas'=>$armadas]);
     }
 
     /**
@@ -57,7 +58,14 @@ class PengirimanController extends Controller
      */
     public function update(Request $request, Pengiriman $pengiriman)
     {
-        //
+        $validatedData = $request->validate([
+            'kendaraan' => 'required',
+            'ketersediaan' => 'required',
+            'kapasitas' => 'required|integer',
+        ]);
+
+        Armada::where('id', $armada->id)->update($validatedData);
+        return redirect(route('armada.index'))->with('success', 'Armada '.$armada->id.' has been updated');
     }
 
     /**

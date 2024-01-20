@@ -14,18 +14,23 @@ class ArmadaSeeder extends Seeder
     public function run(): void
     {
         Armada::create([
-            'kendaraan' => 'truck bsr',
-            'ketersediaan'=>'tersedia',
-            'kapasitas'=>500,
-        ]);
-        Armada::create([
-            'kendaraan' => 'mobil box',
-            'ketersediaan'=>'tersedia',
+            'kendaraan' => 'Mobil Box',
+            'ketersediaan'=>'ada',
             'kapasitas'=>300,
         ]);
         Armada::create([
-            'kendaraan' => 'kapal',
-            'ketersediaan'=>'tersedia',
+            'kendaraan' => 'Truck',
+            'ketersediaan'=>'ada',
+            'kapasitas'=>500,
+        ]);
+        Armada::create([
+            'kendaraan' => 'Kapal',
+            'ketersediaan'=>'ada',
+            'kapasitas'=>3000,
+        ]);
+        Armada::create([
+            'kendaraan' => 'Pesawat',
+            'ketersediaan'=>'ada',
             'kapasitas'=>5000,
         ]);
     }
