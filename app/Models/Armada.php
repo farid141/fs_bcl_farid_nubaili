@@ -15,6 +15,6 @@ class Armada extends Model
     
     public function pengiriman()
     {
-        return $this->hasOne(Pengiriman::class);
+        return $this->hasMany(Pengiriman::class);
     }
 }

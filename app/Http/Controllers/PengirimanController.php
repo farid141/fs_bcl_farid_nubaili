@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengiriman;
+use App\Models\Armada;
 use Illuminate\Http\Request;
 
 class PengirimanController extends Controller
@@ -22,7 +23,8 @@ class PengirimanController extends Controller
      */
     public function create()
     {
-        //
+        $armadas=Armada::where('ketersediaan', 'tersedia')->get();
+        return view('pengiriman.create', ['armadas'=>$armadas]);
     }
 
     /**
@@ -30,7 +32,16 @@ class PengirimanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_armada' => '',
+            'tanggal_kirim' => 'required|date|after:today',
+            'loc_asal' => '',
+            'loc_tujuan' => '',
+            'status' => 'required',
+        ]);
+
+        Pengiriman::create($validatedData);
+        return redirect(route('pengiriman.index'))->with('success', 'New pengiriman has been added');
     }
 
     /**
