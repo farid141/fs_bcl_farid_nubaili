@@ -37,7 +37,6 @@ class ArmadaController extends Controller
 
         Armada::create($validatedData);
         return redirect(route('armada.index'))->with('success', 'New file has been added');
-        // echo "storing armada";
     }
 
     /**
@@ -69,6 +68,7 @@ class ArmadaController extends Controller
      */
     public function destroy(Armada $armada)
     {
-        //
+        Armada::destroy($armada->id);
+        return redirect(route('armada.index'))->with('success', 'Armada '.$armada->id.' has been deleted');
     }
 }

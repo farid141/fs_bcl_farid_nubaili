@@ -14,6 +14,7 @@
             <th scope="col">Kendaraan</th>
             <th scope="col">Ketersediaan</th>
             <th scope="col">Kapasitas</th>
+            <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,19 @@
             <td>{{ $armada->kendaraan }}</td>
             <td>{{ $armada->ketersediaan }}</td>
             <td>{{ $armada->kapasitas }}</td>
+            <td>
+                <a href="{{ route('armada.edit', $armada->id) }}" class="badge bg-warning border-0">
+                    Edit
+                </a>
+
+                <form action="{{ route('armada.destroy', $armada->id) }}" method="post" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button class="badge bg-danger border-0" onclick="return confirm('are you sure?')">
+                        delete
+                    </button>
+                </form>
+            </td>
         </tr>
         @endforeach
     </tbody>

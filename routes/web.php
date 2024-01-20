@@ -21,5 +21,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/armada', ArmadaController::class);
-Route::resource('/pengiriman', PengirimanController::class);
+Route::resource('/armada', ArmadaController::class)->except('show');
+Route::resource('/pengiriman', PengirimanController::class)->except('show');
