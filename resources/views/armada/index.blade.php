@@ -1,5 +1,19 @@
 @extends('layouts.main')
 @section('container')
+<div class="search-container">
+    <label>
+        <input type="checkbox" id="checkParam1"> Kendaraan:
+    </label>
+    <input type="text" id="param1" name="param1" placeholder="Enter kendaraan" disabled value={{
+        $kendaraan?$kendaraan:'' }}>
+    <label>
+        <input type="checkbox" id="checkParam2"> Ketersediaan:
+    </label>
+    <input type="text" id="param2" name="param2" placeholder="Enter ketersediaan" disabled value={{
+        $ketersediaan?$ketersediaan:'' }}>
+
+    <button type="button" onclick="performSearch()">Search</button>
+</div>
 @if (session()->has('success'))
 <div class="alert alert-success col-lg-8" role="alert">
     {{ session('success') }}

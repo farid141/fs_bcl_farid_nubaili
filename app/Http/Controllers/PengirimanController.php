@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Pengiriman;
 use App\Models\Armada;
 use Illuminate\Http\Request;
@@ -11,11 +12,20 @@ class PengirimanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $no_kirim=$request->input('param1');
+        $loc_tujuan=$request->input('param2');
         // eager loading
-        $pengirimans = Pengiriman::with('armada')->get();
-        return view('pengiriman.index', ['pengirimans'=>$pengirimans]);
+        $pengirimans = Pengiriman::with('armada')->search([
+            'no_kirim'=>$no_kirim, 
+            'loc_tujuan'=>$loc_tujuan,
+        ])->get();
+        return view('pengiriman.index', [
+            'pengirimans'=>$pengirimans,
+            'no_kirim'=>$no_kirim,
+            'loc_tujuan'=>$loc_tujuan
+        ]);
     }
 
     /**
@@ -75,6 +85,7 @@ class PengirimanController extends Controller
      */
     public function destroy(Pengiriman $pengiriman)
     {
-        //
+        Pengiriman::destroy($pengiriman->id);
+        return redirect(route('pengiriman.index'))->with('success', 'Pengiriman '.$pengiriman->id.' has been deleted');
     }
 }

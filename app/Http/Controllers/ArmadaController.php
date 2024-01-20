@@ -10,10 +10,19 @@ class ArmadaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $armadas = Armada::all();
-        return view('armada.index', ['armadas'=>$armadas]);
+        $kendaraan=$request->input('param1');
+        $ketersediaan=$request->input('param2');
+        $armadas = Armada::search([
+            'kendaraan'=>$kendaraan, 
+            'ketersediaan'=>$ketersediaan,
+        ])->get();
+        return view('armada.index', [
+            'armadas'=>$armadas, 
+            'kendaraan'=>$kendaraan, 
+            'ketersediaan'=>$ketersediaan
+        ]);
     }
 
     /**

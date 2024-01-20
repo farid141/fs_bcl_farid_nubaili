@@ -30,8 +30,39 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
     <script>
-        $(function(){
-        $('#datepicker').datepicker();
+        // $(function(){
+        // $('#datepicker').datepicker();
+        // });
+
+        function performSearch() {
+            // Get checkbox states
+            var checkParam1 = document.getElementById("checkParam1").checked;
+            var checkParam2 = document.getElementById("checkParam2").checked;
+
+            // Get values from the input fields only if the corresponding checkbox is checked
+            var param1 = checkParam1 ? document.getElementById("param1").value : null;
+            var param2 = checkParam2 ? document.getElementById("param2").value : null;
+
+            // Build the URL with non-null parameters
+            var url = window.location.pathname + "?";
+            if (param1 !== null) {
+                url += "param1=" + encodeURIComponent(param1) + "&";
+            }
+            if (param2 !== null) {
+                url += "param2=" + encodeURIComponent(param2);
+            }
+
+            // Redirect to the new URL
+            window.location.href = url;
+        }
+        
+        // Enable/disable input fields based on checkbox state
+        document.getElementById("checkParam1").addEventListener("change", function () {
+            document.getElementById("param1").disabled = !this.checked;
+        });
+
+        document.getElementById("checkParam2").addEventListener("change", function () {
+            document.getElementById("param2").disabled = !this.checked;
         });
     </script>
 </body>
