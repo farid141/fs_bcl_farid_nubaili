@@ -12,7 +12,8 @@ class ArmadaController extends Controller
      */
     public function index()
     {
-        //
+        $armadas = Armada::all();
+        return view('armada.index', ['armadas'=>$armadas]);
     }
 
     /**
