@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_armada')->references('id')->on('armadas');
             $table->string('tanggal_kirim', 10);
-            $table->string('loc_asal', 20);
-            $table->string('loc_tujuan', 20);
+            $table->string('loc_asal', 30);
+            $table->string('loc_tujuan', 30);
             $table->string('status', 10);
         });
     }

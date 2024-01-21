@@ -46,7 +46,7 @@
             <td>{{ $pengiriman->status }}</td>
             <td>
                 <a href="{{ route('pengiriman.edit', $pengiriman->id) }}" class="badge bg-warning border-0">
-                    Edit
+                    Edit <i class="bi bi-pencil-square"></i>
                 </a>
 
                 <form action="{{ route('pengiriman.destroy', $pengiriman->id) }}" method="post" class="d-inline">
@@ -54,7 +54,7 @@
                     @method('DELETE')
                     <button class="badge bg-danger border-0"
                         onclick="return confirm('are you sure to delete pengiriman {{ $pengiriman->id }}?')">
-                        delete
+                        Delete <i class="bi bi-trash3"></i>
                     </button>
                 </form>
             </td>

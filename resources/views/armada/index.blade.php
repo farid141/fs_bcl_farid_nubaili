@@ -42,7 +42,7 @@
             <td>{{ $armada->kapasitas }}</td>
             <td>
                 <a href="{{ route('armada.edit', $armada->id) }}" class="badge bg-warning border-0">
-                    Edit
+                    Edit <i class="bi bi-pencil-square"></i>
                 </a>
 
                 <form action="{{ route('armada.destroy', $armada->id) }}" method="post" class="d-inline">
@@ -50,7 +50,7 @@
                     @method('DELETE')
                     <button class="badge bg-danger border-0"
                         onclick="return confirm('are you sure to delete {{ $armada->id }}?')">
-                        delete
+                        Delete <i class="bi bi-trash3"></i>
                     </button>
                 </form>
             </td>
